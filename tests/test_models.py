@@ -218,7 +218,7 @@ class TestProductModel(unittest.TestCase):
         found = Product.find_by_name(name)
 
         # 5
-        self.assertEqual(count, len(found))
+        self.assertEqual(count, found.count())
 
         # 6
         for product in found:
@@ -233,7 +233,7 @@ class TestProductModel(unittest.TestCase):
             product.create()
 
         # 2
-        availability = product.available
+        availability = products[0].available
 
         # 3
         count = len([product for product in products if product.available == availability])
@@ -242,7 +242,7 @@ class TestProductModel(unittest.TestCase):
         found = Product.find_by_availability(availability)
 
         # 5
-        self.assertEqual(count, len(found))
+        self.assertEqual(count, found.count())
 
         # 6
         for product in found:
@@ -257,7 +257,7 @@ class TestProductModel(unittest.TestCase):
             product.create()
 
         # 2
-        category = product.category
+        category = products[0].category
 
         # 3
         count = len([product for product in products if product.category == category])
@@ -266,7 +266,7 @@ class TestProductModel(unittest.TestCase):
         found = Product.find_by_category(category)
 
         # 5
-        self.assertEqual(count, len(found))
+        self.assertEqual(count, found.count())
 
         # 6
         for product in found:
